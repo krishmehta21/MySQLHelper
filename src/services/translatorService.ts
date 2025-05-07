@@ -1,4 +1,3 @@
-
 const API_URL = "http://localhost:5000";
 
 export const translateNaturalLanguageToSql = async (question: string): Promise<string> => {
@@ -11,12 +10,12 @@ export const translateNaturalLanguageToSql = async (question: string): Promise<s
       body: JSON.stringify({ question }),
     });
 
+    const data = await response.json();
+
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.error || "Failed to translate");
+      throw new Error(data.error || "Failed to translate");
     }
 
-    const data = await response.json();
     return data.sql_query;
   } catch (error) {
     console.error("Error translating:", error);

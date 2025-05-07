@@ -1,73 +1,111 @@
-# Welcome to your Lovable project
+# 🧠 Speak SQL Easily
 
-## Project info
+A user-friendly web app that translates natural language queries into SQL using an NLP model. Built with **React**, **Tailwind CSS**, and **Vite**, it provides a beautiful interface and custom syntax-highlighted SQL output with clipboard support.
 
-**URL**: https://lovable.dev/projects/ae8e0562-64b9-4fa4-a5c5-add11427b65a
+## ✨ Features
 
-## How can I edit this code?
+- 🧾 Translate natural language to SQL queries
+- 🎨 SQL syntax highlighting
+- 📋 Copy generated SQL to clipboard
+- 🌙 Dark mode support
+- ⚡ Fast performance with Vite
+- 💄 Styled with Tailwind CSS + ShadCN components
 
-There are several ways of editing your application.
+## 🚀 Demo
 
-**Use Lovable**
+**Local**: http://localhost:8080  
+**Network**: http://<your-ip>:8080
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/ae8e0562-64b9-4fa4-a5c5-add11427b65a) and start prompting.
+## 🛠 Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Frontend:** React + TypeScript + Tailwind CSS
+- **Build Tool:** Vite
+- **Styling Framework:** Tailwind + ShadCN/UI
+- **Syntax Highlighting:** Custom inline HTML-based approach
+- **Clipboard API:** Native browser support
 
-**Use your preferred IDE**
+## 📦 Installation
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Clone the repo and install dependencies:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+```bash
+git clone https://github.com/your-username/speak-sql-easily.git
+cd speak-sql-easily
+npm install
+````
 
-Follow these steps:
+## 🧪 Run the App
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Then open [http://localhost:8080](http://localhost:8080) in your browser.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🖌️ Customize Tailwind Theme
 
-**Use GitHub Codespaces**
+Color variables are defined in `src/index.css`:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-## What technologies are used for this project?
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    ...
+  }
 
-This project is built with:
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    ...
+  }
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+```
 
-## How can I deploy this project?
+## 📁 Folder Structure
 
-Simply open [Lovable](https://lovable.dev/projects/ae8e0562-64b9-4fa4-a5c5-add11427b65a) and click on Share -> Publish.
+```
+speak-sql-easily/
+├── src/
+│   ├── components/    # Custom components (e.g., CodeBlock)
+│   ├── pages/         # Main pages (e.g., Index.tsx)
+│   ├── lib/           # Utility functions (e.g., classNames)
+│   ├── index.css      # Tailwind CSS setup and variables
+│   └── main.tsx       # Entry point
+├── public/
+├── index.html
+├── package.json
+└── vite.config.ts
+```
 
-## Can I connect a custom domain to my Lovable project?
+## 🛡️ Security Notes
 
-Yes, you can!
+If you see vulnerabilities during install, you can fix them using:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```bash
+npm audit fix
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 📋 To-Do
+
+* [ ] Add API backend for NLP model (T5 from Hugging Face)
+* [ ] Support for multiple SQL dialects
+* [ ] Add theme toggle switch (light/dark)
+* [ ] Add recent query history
+
+## 🧠 Credits
+
+* Inspired by SQL translators like OpenAI Codex and Hugging Face T5.
+* UI inspired by modern developer dashboards using Tailwind and ShadCN.
+
+
+
+

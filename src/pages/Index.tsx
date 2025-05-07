@@ -44,7 +44,7 @@ const Index = () => {
           </h1>
           <div className="h-1 w-32 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mx-auto mb-6 rounded-full"></div>
           <p className="text-slate-300 text-lg max-w-2xl mx-auto">
-            Transform your questions into SQL queries using AI. Simply type your question in plain English.
+            Transform your questions into SQL queries. Simply type your question in plain English.
           </p>
         </header>
 
@@ -69,7 +69,7 @@ const Index = () => {
             <div className="space-y-6">
               <div className="relative">
                 <Input
-                  placeholder="e.g., Show me all users who signed up last month"
+                  placeholder="e.g., How many Students in School Table?"
                   value={question}
                   onChange={(e) => setQuestion(e.target.value)}
                   className="bg-slate-800/50 backdrop-blur-sm border-slate-700/50 text-white placeholder:text-slate-400 h-12 rounded-lg focus:ring-2 focus:ring-indigo-500/50 focus:border-transparent transition-all shadow-lg"
@@ -123,7 +123,7 @@ const Index = () => {
           <CardFooter className="border-t border-white/5 flex justify-center">
             <p className="text-sm text-slate-400 text-center flex items-center gap-2">
               <span className="inline-block w-3 h-3 rounded-full bg-gradient-to-r from-indigo-400 to-purple-500"></span>
-              Powered by T5 NLP Model - mrm8488/t5-small-finetuned-wikiSQL
+              Project made by: Vandita Maloo
             </p>
           </CardFooter>
         </Card>
