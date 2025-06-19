@@ -1,9 +1,10 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { translateNaturalLanguageToSql } from "@/services/translatorService";
+import { initializeModel } from "@/services/huggingFaceService";
 import { CodeBlock } from "@/components/CodeBlock";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
 import { toast } from "sonner";
@@ -12,6 +13,23 @@ const Index = () => {
   const [question, setQuestion] = useState("");
   const [sqlQuery, setSqlQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isModelReady, setIsModelReady] = useState(false);
+
+  useEffect(() => {
+    const loadModel = async () => {
+      try {
+        toast.info("Loading AI model...");
+        await initializeModel();
+        setIsModelReady(true);
+        toast.success("AI model ready!");
+      } catch (error) {
+        console.error("Failed to load model:", error);
+        toast.error("Failed to load AI model");
+      }
+    };
+    
+    loadModel();
+  }, []);
 
   const handleTranslate = async () => {
     if (!question.trim()) {
@@ -19,10 +37,16 @@ const Index = () => {
       return;
     }
 
+    if (!isModelReady) {
+      toast.warning("AI model is still loading, please wait...");
+      return;
+    }
+
     setIsLoading(true);
     try {
       const result = await translateNaturalLanguageToSql(question);
       setSqlQuery(result);
+      toast.success("Translation completed!");
     } catch (error) {
       console.error("Translation error:", error);
       toast.error("Failed to translate. Please try again.");
